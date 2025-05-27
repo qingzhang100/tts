@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import axios from "axios";
+import MainLayOut from "./layouts/MainLayouts";
 
 function App() {
   const [text, setText] = useState("");
@@ -15,7 +16,7 @@ function App() {
   }
 
   return (
-    <>
+    <MainLayOut>
       <h1>Text to Speech</h1>
       <textarea
         value={text}
@@ -26,7 +27,7 @@ function App() {
       <button onClick={handleSynthesize}>Synthesize</button>
       <br />
       {audioSrc && <audio controls src={audioSrc} />}
-    </>
+    </MainLayOut>
   );
 }
 
