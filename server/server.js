@@ -19,7 +19,7 @@ app.get("/", (req, res) => {
   res.send("Test the server is running.");
 });
 
-app.post("/synthesize", async (req, res) => {
+app.post("/convert", async (req, res) => {
   try {
     const text = req.body.text;
     if (!text) {
