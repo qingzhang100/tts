@@ -21,7 +21,7 @@ app.get("/", (req, res) => {
 
 app.post("/convert", async (req, res) => {
   try {
-    const text = req.body.text;
+    const { text, voice } = req.body;
     if (!text) {
       return res.status(400).json({ error: "Missing text input" });
     }
@@ -39,8 +39,8 @@ app.post("/convert", async (req, res) => {
         text,
       },
       voice: {
-        languageCode: "en-US",
-        name: "en-US-Chirp3-HD-Achernar",
+        languageCode: voice.split("-").slice(0, 2).join("-"), // e.g. "en-US"
+        name: voice, // full voice name like "en-US-Wavenet-C"
       },
     };
 

@@ -1,13 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
 import MainLayOut from "./layouts/MainLayouts";
 import FontSizeSwitcher from "./components/FontSizeSwitcher";
+import SpeechSettings from "./components/SpeechSettings/SpeechSettings";
 
 function App() {
   const [text, setText] = useState("");
   const [audioSrc, setAudioSrc] = useState(null);
-  const [fontSize, setFontSize] = useState(18);
+  const [fontSize, setFontSize] = useState(22);
+  const [language, setLanguage] = useState("en-US");
+  const [voice, setVoice] = useState("en-US-Wavenet-F");
 
   async function handleConvert() {
     const response = await axios.post("http://localhost:8080/convert", {
@@ -17,13 +20,23 @@ function App() {
     setAudioSrc(audioSrc);
   }
 
+  const DEFAULT_VOICES_BY_LANGUAGE = {
+    "en-US": "en-US-Wavenet-F",
+    "zh-CN": "cmn-CN-Wavenet-B",
+  };
+
+  useEffect(() => {
+    const selectedVoice = DEFAULT_VOICES_BY_LANGUAGE[language];
+    if (selectedVoice) {
+      setVoice(selectedVoice);
+    }
+  }, [language]);
+
   return (
     <MainLayOut fontSize={fontSize}>
       <FontSizeSwitcher setFontSize={setFontSize} />
-      <p className="mb-4 text-gray-700">
-        This tool is designed primarily to assist visually impaired users by
-        providing clear and accessible text-to-speech functionality.
-      </p>
+      <SpeechSettings language={language} setLanguage={setLanguage} />
+
       <textarea
         value={text}
         onChange={(e) => setText(e.target.value)}
@@ -45,6 +58,7 @@ function App() {
         rows={4}
       />
       <br />
+
       <button
         onClick={handleConvert}
         className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
@@ -53,6 +67,15 @@ function App() {
       </button>
       <br />
       {audioSrc && <audio controls src={audioSrc} />}
+      <p className="mb-4 text-gray-700">
+        Our tool is designed to make digital content accessible to everyone,
+        with a special focus on supporting users with visual impairments,
+        reading difficulties, or anyone who prefers to listen rather than read.
+        Whether you are browsing, studying, or multitasking, HearText provides
+        clear, natural-sounding speech to help you effortlessly consume
+        information. Experience seamless accessibility and convenience—because
+        everyone deserves easy access to information.
+      </p>
     </MainLayOut>
   );
 }
