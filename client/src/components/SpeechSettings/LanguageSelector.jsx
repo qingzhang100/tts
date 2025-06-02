@@ -4,14 +4,13 @@ function LanguageSelector({ setLanguage }) {
   const [selected, setSelected] = useState("en-US");
 
   const handleChange = (e) => {
-    const newLang = e.target.value;
-    setSelected(newLang);
-    setLanguage(newLang);
+    setSelected(e.target.value);
+    setLanguage(e.target.value);
   };
 
   return (
-    <div className="mb-4 flex">
-      <label className="block mb-1 text-sm font-medium text-gray-700">
+    <div className="mb-4 flex items-center">
+      <label className="mb-1 text-sm font-medium text-gray-700 mr-2 whitespace-nowrap">
         Select Language:
       </label>
       <select

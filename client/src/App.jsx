@@ -10,32 +10,27 @@ function App() {
   const [audioSrc, setAudioSrc] = useState(null);
   const [fontSize, setFontSize] = useState(22);
   const [language, setLanguage] = useState("en-US");
-  const [voice, setVoice] = useState("en-US-Wavenet-F");
+  const [voice, setVoice] = useState("en-US-Wavenet-F"); // Default voice is female English
 
   async function handleConvert() {
     const response = await axios.post("http://localhost:8080/convert", {
       text,
+      voice,
+      language,
     });
     const audioSrc = `data:audio/mp3;base64, ${response.data.audioContent}`;
     setAudioSrc(audioSrc);
   }
 
-  const DEFAULT_VOICES_BY_LANGUAGE = {
-    "en-US": "en-US-Wavenet-F",
-    "zh-CN": "cmn-CN-Wavenet-B",
-  };
-
-  useEffect(() => {
-    const selectedVoice = DEFAULT_VOICES_BY_LANGUAGE[language];
-    if (selectedVoice) {
-      setVoice(selectedVoice);
-    }
-  }, [language]);
-
   return (
     <MainLayOut fontSize={fontSize}>
       <FontSizeSwitcher setFontSize={setFontSize} />
-      <SpeechSettings language={language} setLanguage={setLanguage} />
+      <SpeechSettings
+        language={language}
+        setLanguage={setLanguage}
+        voice={voice}
+        setVoice={setVoice}
+      />
 
       <textarea
         value={text}
