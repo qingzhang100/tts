@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
 import MainLayOut from "./layouts/MainLayouts";
-import FontSizeSwitcher from "./components/FontSizeSwitcher";
-import SpeechSettings from "./components/SpeechSettings/SpeechSettings";
+import FontSizeSwitcher from "./components/Settings/FontSizeSwitcher";
+import SpeechSettings from "./components/Settings/SpeechSettings";
 
 function App() {
   const [text, setText] = useState("");
@@ -29,13 +29,7 @@ function App() {
 
   return (
     <MainLayOut fontSize={fontSize}>
-      <FontSizeSwitcher setFontSize={setFontSize} />
-      <SpeechSettings
-        language={language}
-        setLanguage={setLanguage}
-        voice={voice}
-        setVoice={setVoice}
-      />
+      <Settings />
 
       <textarea
         value={text}
@@ -51,7 +45,7 @@ function App() {
     focus:outline-none
     focus:ring-2
     focus:ring-blue-500
-    resize-none
+    resize-y
     text-gray-700
     placeholder-gray-400
   "
