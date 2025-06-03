@@ -12,6 +12,11 @@ function App() {
   const [language, setLanguage] = useState("en-US");
   const [voice, setVoice] = useState("en-US-Wavenet-F"); // Default voice is female English
 
+  useEffect(() => {
+    console.log("Current language:", language);
+    console.log("Current voice code:", voice);
+  }, [language, voice]);
+
   async function handleConvert() {
     const response = await axios.post("http://localhost:8080/convert", {
       text,

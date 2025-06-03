@@ -5,7 +5,11 @@ function SpeechSettings({ language, setLanguage, voice, setVoice }) {
   return (
     <div className="flex gap-4 items-center">
       <LanguageSelector setLanguage={setLanguage} />
-      <VoiceSelector language={language} voice={voice} setVoice={setVoice} />
+      <VoiceSelector
+        language={language}
+        voice={voice}
+        setVoice={setVoice}
+      />{" "}
     </div>
   );
 }
