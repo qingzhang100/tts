@@ -2,8 +2,7 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
 import MainLayOut from "./layouts/MainLayouts";
-import FontSizeSwitcher from "./components/Settings/FontSizeSwitcher";
-import SpeechSettings from "./components/Settings/SpeechSettings";
+import Settings from "./components/Settings/Settings";
 
 function App() {
   const [text, setText] = useState("");
@@ -29,14 +28,20 @@ function App() {
 
   return (
     <MainLayOut fontSize={fontSize}>
-      <Settings />
-
-      <textarea
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        placeholder="Enter text"
-        style={{ fontSize: `${fontSize}px` }}
-        className="
+      <Settings
+        setFontSize={setFontSize}
+        language={language}
+        setLanguage={setLanguage}
+        voice={voice}
+        setVoice={setVoice}
+      />
+      <div className="relative w-full">
+        <textarea
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          placeholder="Enter text"
+          style={{ fontSize: `${fontSize}px` }}
+          className="
     w-full
     p-3
     border
@@ -49,8 +54,12 @@ function App() {
     text-gray-700
     placeholder-gray-400
   "
-        rows={4}
-      />
+          rows={4}
+        />
+        <p className="absolute bottom-[-0.8rem] right-3 text-[0.7rem] text-gray-500 pointer-events-none">
+          drag to adjust the window size
+        </p>
+      </div>
       <br />
 
       <button

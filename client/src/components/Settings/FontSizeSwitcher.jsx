@@ -5,12 +5,12 @@ export default function FontSizeSwitcher({ setFontSize }) {
   const decreaseFont = () => setFontSize((size) => Math.max(size - 2, 12));
 
   return (
-    <div className="mb-4 flex gap-3">
+    <div className="flex gap-3">
       <button
         onClick={decreaseFont}
-        className="
-          px-4 py-2 
-          bg-gray-200 
+        className="w-10
+        p-2
+          bg-white 
           text-gray-700 
           rounded-md 
           border border-gray-300 
@@ -29,20 +29,20 @@ export default function FontSizeSwitcher({ setFontSize }) {
       </button>
       <button
         onClick={increaseFont}
-        className="
-          px-4 py-2 
-          bg-blue-600 
-          text-white 
+        className="w-10
+        p-2
+          bg-white 
+          text-gray-700 
           rounded-md 
-          border border-blue-700 
-          hover:bg-blue-700 
-          active:bg-blue-800 
+          border border-gray-300 
+          hover:bg-gray-300 
+          active:bg-gray-400 
           transition 
           duration-150 
           ease-in-out
           font-semibold
           select-none
-          shadow
+          shadow-sm
         "
         aria-label="Increase font size"
       >

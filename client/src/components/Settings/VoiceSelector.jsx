@@ -11,9 +11,8 @@ function VoiceSelector({ language, setVoice }) {
   // }, [language, setVoice]);
 
   function handleSelectVoice(e) {
-    const gender = e.target.value;
-    setSelected(gender);
-    const newVoiceCode = getVoiceCode(language, gender);
+    setSelected(e.target.value);
+    const newVoiceCode = getVoiceCode(language, e.target.value);
     setVoice(newVoiceCode);
   }
 
@@ -33,14 +32,14 @@ function VoiceSelector({ language, setVoice }) {
   }, [language, selected, setVoice]);
 
   return (
-    <div className="mb-4 flex items-center">
-      <label className="mb-1 text-sm font-medium text-gray-700 mr-2 whitespace-nowrap">
-        Choose voice:
+    <div className="flex items-center">
+      <label className="text-sm font-medium text-gray-700 mr-2 whitespace-nowrap">
+        Voice:
       </label>
       <select
         value={selected}
         onChange={handleSelectVoice}
-        className="border rounded px-3 py-2 w-full text-gray-700"
+        className="border rounded w-full p-2 text-gray-700 p-2"
       >
         <option value="Female">Female</option>
         <option value="Male">Male</option>

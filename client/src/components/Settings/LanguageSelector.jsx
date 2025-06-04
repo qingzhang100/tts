@@ -6,14 +6,14 @@ function LanguageSelector({ language, setLanguage }) {
   };
 
   return (
-    <div className="mb-4 flex items-center">
-      <label className="mb-1 text-sm font-medium text-gray-700 mr-2 whitespace-nowrap">
-        Select Language:
+    <div className="flex items-center">
+      <label className="text-sm font-medium text-gray-700 mr-2 whitespace-nowrap">
+        Language:
       </label>
       <select
         value={language}
         onChange={handleChange}
-        className="w-full p-2 border rounded"
+        className="w-full border rounded p-2"
       >
         <option value="en-US">English (US) - English</option>
         <option value="ja-JP">Japanese - 日本語</option>
