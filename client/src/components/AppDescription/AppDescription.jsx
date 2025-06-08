@@ -1,7 +1,7 @@
 // src/components/AppDescription.jsx
 export default function About() {
   return (
-    <p className="mb-4 text-gray-700 text-base leading-relaxed">
+    <p className="mb-14 text-gray-700 text-base leading-relaxed">
       Our tool is designed to make digital content accessible to everyone, with
       a special focus on supporting users with visual impairments, reading
       difficulties, or anyone who prefers to listen rather than read. Whether

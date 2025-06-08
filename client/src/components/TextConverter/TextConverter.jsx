@@ -20,7 +20,7 @@ export default function TextConverter({
   }
 
   return (
-    <div className="w-full mb-4">
+    <div className="w-full mb-14">
       <textarea
         value={text}
         onChange={(e) => setText(e.target.value)}

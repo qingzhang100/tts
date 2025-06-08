@@ -6,6 +6,7 @@ import Settings from "./components/TextConverter/Settings/Settings";
 import Carousel from "./components/Carousel/Carousel";
 import AppDescription from "./components/AppDescription/AppDescription";
 import TextConverter from "./components/TextConverter/TextConverter";
+import HowItWorks from "./components/HowItWorks/HowItWorks";
 
 function App() {
   const [text, setText] = useState("");
@@ -38,7 +39,8 @@ function App() {
         setAudioSrc={setAudioSrc}
       />
       <AppDescription />
-      <Carousel />
+      {/* <Carousel /> */}
+      <HowItWorks />
     </MainLayOut>
   );
 }
