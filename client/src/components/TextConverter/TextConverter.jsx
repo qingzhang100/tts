@@ -20,7 +20,7 @@ export default function TextConverter({
   }
 
   return (
-    <div className="w-full mb-14">
+    <div className="w-full mb-14 flex flex-col gap-4">
       <textarea
         value={text}
         onChange={(e) => setText(e.target.value)}
@@ -47,7 +47,7 @@ export default function TextConverter({
 
       <button
         onClick={handleConvert}
-        className=" bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+        className="w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto block bg-blue-500 text-white text-lg px-6 py-3 rounded-xl shadow hover:bg-blue-600 transition"
       >
         Convert
       </button>
