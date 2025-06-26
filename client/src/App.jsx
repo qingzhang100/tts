@@ -39,8 +39,8 @@ function App() {
         setAudioSrc={setAudioSrc}
       />
       <AppDescription />
-      {/* <Carousel /> */}
       <HowItWorks />
+      <Carousel />
     </MainLayOut>
   );
 }

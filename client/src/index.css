@@ -25,6 +25,6 @@ select {
 
 /* Optional: Add focus styles to improve keyboard navigation */
 :focus {
-  outline: 2px solid #3b82f6; /* Tailwind's blue-500 */
+  outline: 2px solid darkcyan; /* Tailwind's blue-500 */
   outline-offset: 2px;
 }

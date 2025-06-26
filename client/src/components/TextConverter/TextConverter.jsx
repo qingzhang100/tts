@@ -34,20 +34,20 @@ export default function TextConverter({
           rounded-md
           focus:outline-none
           focus:ring-2
-          focus:ring-blue-500
+          focus:ring-cyan-500
           resize-y
           text-gray-700
           placeholder-gray-400
         "
         rows={4}
       />
-      <p className="mt-[-0.2rem] text-[0.6rem] text-gray-500 text-right">
+      <p className="mt-[-0.8rem] text-[0.6rem] text-gray-500 text-right">
         Drag to adjust the window size
       </p>
 
       <button
         onClick={handleConvert}
-        className="w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto block bg-blue-500 text-white text-lg px-6 py-3 rounded-xl shadow hover:bg-blue-600 transition"
+        className="w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto block bg-cyan-600 text-white text-lg py-1 rounded-xl shadow hover:bg-cyan-500 transition"
       >
         Convert
       </button>

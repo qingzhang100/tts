@@ -61,8 +61,8 @@ function HowItWorks() {
   }
 
   return (
-    <div className="space-y-4">
-      <h1 className="text-2xl font-bold text-center text-blue-600">
+    <div className="space-y-4 mb-14">
+      <h1 className="text-2xl font-bold text-center text-cyan-600">
         How It Works
       </h1>
       {/* <div className="flex justify-center space-x-4 mb-1 text-[0.8rem]">
