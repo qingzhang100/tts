@@ -1,6 +1,20 @@
+import { useState } from "react";
+import LoginModal from "./Modal/LoginModal";
+
 export default function Header() {
+  const [showLogin, setShowLogin] = useState(false);
+
+  function openLoginModal(e) {
+    e.preventDefault();
+    setShowLogin(true);
+  }
+
+  function closeLoginModal() {
+    setShowLogin(false);
+  }
+
   return (
-    <header>
+    <header className="text-sm">
       <div className="py-4 text-white text-center">
         <a
           href="/"
@@ -15,29 +29,38 @@ export default function Header() {
         <nav className="flex-1">
           <ul className="flex space-x-6">
             <li>
-              <a href="/" className="text-cyan-500 hover:underline">
-                Converter
+              <a href="/" className="text-cyan-600 hover:underline">
+                Home/Converter
               </a>
             </li>
             <li>
-              <a href="/about" className="text-cyan-500 hover:underline">
+              <a href="/about" className="text-cyan-600 hover:underline">
                 About
               </a>
             </li>
             <li>
-              <a href="/how-it-works" className="text-cyan-500 hover:underline">
+              <a href="/how-it-works" className="text-cyan-600 hover:underline">
                 How It Works
               </a>
             </li>
           </ul>
         </nav>
 
-        <div>
-          <a href="/login" className="text-cyan-500 hover:underline">
+        <div className="flex space-x-4">
+          <a href="/login" className="text-cyan-600 hover:underline">
+            Sign Up
+          </a>
+          <a
+            href="/login"
+            className="text-cyan-600 hover:underline"
+            onClick={openLoginModal}
+          >
             Login
           </a>
         </div>
       </div>
+
+      {showLogin && <LoginModal onClose={closeLoginModal} />}
     </header>
   );
 }
