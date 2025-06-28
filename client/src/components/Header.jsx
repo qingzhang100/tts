@@ -1,16 +1,27 @@
 import { useState } from "react";
 import LoginModal from "./Modal/LoginModal";
+import SignUpModal from "./Modal/SignUpModal"; // 新增导入
 
 export default function Header() {
   const [showLogin, setShowLogin] = useState(false);
+  const [showSignUp, setShowSignUp] = useState(false); // 新增状态
 
   function openLoginModal(e) {
     e.preventDefault();
     setShowLogin(true);
   }
 
+  function openSignUpModal(e) {
+    e.preventDefault();
+    setShowSignUp(true);
+  }
+
   function closeLoginModal() {
     setShowLogin(false);
+  }
+
+  function closeSignUpModal() {
+    setShowSignUp(false);
   }
 
   return (
@@ -47,7 +58,11 @@ export default function Header() {
         </nav>
 
         <div className="flex space-x-4">
-          <a href="/login" className="text-cyan-600 hover:underline">
+          <a
+            href="/signup"
+            className="text-cyan-600 hover:underline"
+            onClick={openSignUpModal}
+          >
             Sign Up
           </a>
           <a
@@ -60,7 +75,9 @@ export default function Header() {
         </div>
       </div>
 
+      {/* 弹窗区 */}
       {showLogin && <LoginModal onClose={closeLoginModal} />}
+      {showSignUp && <SignUpModal onClose={closeSignUpModal} />}
     </header>
   );
 }
