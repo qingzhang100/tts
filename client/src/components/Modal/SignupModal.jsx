@@ -3,6 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { supabase } from "../../lib/supabaseClient";
 
 function SignUpModal({ onClose }) {
+  const [nickname, setNickname] = useState("");
+  46048;
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -24,17 +27,34 @@ function SignUpModal({ onClose }) {
 
     setLoading(true);
 
-    const { error } = await supabase.auth.signUp({ email, password });
-
-    setLoading(false);
+    const { data, error } = await supabase.auth.signUp({ email, password });
 
     if (error) {
       setErrorMsg(error.message);
-    } else {
-      alert("Sign up successful!");
-      onClose();
-      navigate("/dashboard");
+      setLoading(false);
+      return;
     }
+
+    const user = data.user;
+
+    const { error: insertError } = await supabase.from("profiles").insert({
+      id: user.id,
+      nickname: nickname,
+      email: user.email,
+    });
+
+    setLoading(false);
+
+    if (insertError) {
+      setErrorMsg(
+        "Sign up succeeded but saving nickname failed: " + insertError.message
+      );
+      return;
+    }
+
+    alert("Sign up successful!");
+    onClose();
+    navigate("/dashboard");
   }
 
   return (
@@ -53,6 +73,17 @@ function SignUpModal({ onClose }) {
               {errorMsg}
             </div>
           )}
+
+          <div className="mb-3">
+            <label className="block text-sm font-medium mb-1">Nickname</label>
+            <input
+              type="text"
+              className="w-full px-3 py-2 border rounded"
+              value={nickname}
+              onChange={(e) => setNickname(e.target.value)}
+              required
+            />
+          </div>
 
           <div className="mb-3">
             <label className="block text-sm font-medium mb-1">Email</label>
@@ -76,7 +107,7 @@ function SignUpModal({ onClose }) {
             />
           </div>
 
-          <div className="mb-4 relative">
+          <div className="mb-16 relative">
             <label className="block text-sm font-medium mb-1">
               Confirm Password
             </label>

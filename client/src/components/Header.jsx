@@ -1,10 +1,10 @@
 import { useState } from "react";
 import LoginModal from "./Modal/LoginModal";
-import SignUpModal from "./Modal/SignUpModal"; // 新增导入
+import SignUpModal from "./Modal/SignupModal";
 
 export default function Header() {
   const [showLogin, setShowLogin] = useState(false);
-  const [showSignUp, setShowSignUp] = useState(false); // 新增状态
+  const [showSignUp, setShowSignUp] = useState(false);
 
   function openLoginModal(e) {
     e.preventDefault();
@@ -75,7 +75,6 @@ export default function Header() {
         </div>
       </div>
 
-      {/* 弹窗区 */}
       {showLogin && <LoginModal onClose={closeLoginModal} />}
       {showSignUp && <SignUpModal onClose={closeSignUpModal} />}
     </header>

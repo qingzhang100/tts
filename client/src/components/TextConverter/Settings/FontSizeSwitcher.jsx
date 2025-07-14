@@ -5,7 +5,10 @@ export default function FontSizeSwitcher({ setFontSize }) {
   const decreaseFont = () => setFontSize((size) => Math.max(size - 2, 12));
 
   return (
-    <div className="flex gap-3">
+    <div className="flex gap- items-center">
+      <label className="text-sm font-medium text-gray-700 mr-2 whitespace-nowrap">
+        Font Size:
+      </label>
       <button
         onClick={decreaseFont}
         className="w-10
@@ -27,6 +30,7 @@ export default function FontSizeSwitcher({ setFontSize }) {
       >
         A-
       </button>
+      &nbsp;&nbsp;&nbsp;
       <button
         onClick={increaseFont}
         className="w-10
